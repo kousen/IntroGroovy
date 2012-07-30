@@ -15,7 +15,7 @@
  * ========================================================== */
 package builders
 
-def ant = new AntBuilder()
+AntBuilder ant = new AntBuilder()
 String dir = 'src/main/groovy/builders'
 
 assert !(new File("$dir/antbuildercopy.groovy").exists())

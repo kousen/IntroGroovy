@@ -24,10 +24,10 @@ class Camera {
 }
 
 class SmartPhone {
-    @Delegate Phone phone
-    @Delegate Camera camera
+    @Delegate Phone phone = new Phone()
+    @Delegate Camera camera = new Camera()
 }
 
-SmartPhone sp = new SmartPhone(phone:new Phone(),camera:new Camera())
+SmartPhone sp = new SmartPhone()
 assert sp.dial('555-1234') == 'dialing 555-1234'
 assert sp.takePicture() == 'taking picture'

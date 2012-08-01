@@ -1,4 +1,4 @@
-apply plugin:'groovy'
+capply plugin:'groovy'
 apply plugin:'eclipse'
 apply plugin:'idea'
 

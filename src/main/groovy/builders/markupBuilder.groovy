@@ -19,7 +19,7 @@ import groovy.xml.MarkupBuilder;
 
 def writer = new StringWriter()
 def builder = new MarkupBuilder(writer)
-def department = builder.'department' {
+def department = builder.department {
 	deptName "Construction"
 	employee(id:1) {
 		empName "Fred"

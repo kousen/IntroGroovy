@@ -20,10 +20,10 @@ import groovy.transform.EqualsAndHashCode;
 import groovy.transform.ToString;
 import groovy.transform.TupleConstructor;
 
-//@EqualsAndHashCode
-//@ToString
-//@TupleConstructor
-@Canonical
+@EqualsAndHashCode
+@ToString
+@TupleConstructor
+//@Canonical
 class Product {
     int id
     String name

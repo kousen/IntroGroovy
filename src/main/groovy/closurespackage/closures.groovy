@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================== */
-package closures
+package closurespackage
 
 // supplying closure to each
 def total = 0

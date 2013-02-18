@@ -19,7 +19,7 @@ import spock.lang.Specification;
 
 class SingletonPointSpec extends Specification {
     def "can't instantiate"() {
-        when: point = new SingletonPoint(x:3,y:4)
+        when: new SingletonPoint(x:3,y:4)
         then: thrown(RuntimeException)
     }
     

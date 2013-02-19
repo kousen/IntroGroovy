@@ -20,7 +20,7 @@ class ScriptTests extends GroovyTestCase {
 	GroovyShell shell = new GroovyShell()
 
 	void testClosures() {
-		shell.evaluate(new File("$baseDir/closures/closures.groovy"))
+		shell.evaluate(new File("$baseDir/closurespackage/closures.groovy"))
 	}
 	
 	void testCollections() {

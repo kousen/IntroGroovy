@@ -13,20 +13,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================== */
-package ast.delegate
+package geocoder
 
-class WrappedString {
-    @Delegate String string
-}
+import spock.lang.Shared;
+import spock.lang.Specification;
+import spock.lang.Unroll;
+import groovy.sql.Sql
 
-WrappedString s = new WrappedString(string:'hello')
-println s.metaClass.methods.name
-try {
-    println s.size()
-} catch (MissingMethodException e) {
-    System.err.println e
+class StadiumLocationsSpec extends Specification {
+    @Shared Sql db
+    
+    def setupSpec() {
+        db = Sql.newInstance(
+            'jdbc:h2:build/baseball', 
+            'org.h2.Driver')
+    }
+    
+    @Unroll
+    def "#name: #lat and #lng in range"() {
+        expect:
+        lat > 25 && lat < 48
+        lng > -123 && lng < -71
+        
+        where:
+        [name,lat,lng] << db.rows('select name,latitude,longitude from stadium')
+    }
 }
-assert s.length() == 5
-def str = "hello"
-assert !("hello".metaClass.methods.name.findAll { it =~ /size/ })
-assert str.size() == 5

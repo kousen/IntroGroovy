@@ -13,28 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================== */
-package ast.singleton
+package geocoder
 
-import spock.lang.Specification;
+class Geocoder {
+    String base = 'http://maps.google.com/maps/api/geocode/xml?'
 
-class SingletonPointSpec extends Specification {
-    def "can't instantiate"() {
-        when: new SingletonPoint(x:3,y:4)
-        then: thrown(RuntimeException)
+    void fillInLatLng(Stadium stadium) {
+        String urlEncodedAddress = 
+            [stadium.street, stadium.city, stadium.state].collect { 
+                URLEncoder.encode(it,'UTF-8')
+            }.join(',+') 
+        String url = base + [sensor:false,
+            address: urlEncodedAddress].collect {k,v -> "$k=$v"}.join('&')
+        println url
+        def response = new XmlSlurper().parse(url)
+        stadium.latitude = response.result[0].geometry.location.lat.toDouble()
+        stadium.longitude = response.result[0].geometry.location.lng.toDouble()
     }
-    
-    def "instance is not null"() {
-        expect: SingletonPoint.instance
-    }
-    
-    def "can change values"() {
-        when:
-        SingletonPoint.instance.x = 3
-        SingletonPoint.instance.y = 4
-        
-        then:
-        SingletonPoint.instance.x == 3
-        SingletonPoint.instance.y == 4
-    }
-    
 }

@@ -40,13 +40,13 @@ String x = 'Hello'
 String y = x << ', World!'
 assert y == 'Hello, World!'
 
-def palindromes = '''
-	Madam, in Eden, I'm Adam
+def palindromes = 
+'''Madam, in Eden, I'm Adam
 	Sex at noon taxes
-	Flee to me, remote elf!
-'''
+	Flee to me, remote elf!'''
+
 palindromes.eachLine {
-	String str = it.trim().replaceAll(/[ ,\'!?]/,'').toLowerCase()
+	String str = it.trim().replaceAll(/\W/,'').toLowerCase()
 	println str
 	assert str.reverse() == str
 }

@@ -80,3 +80,5 @@ db.eachRow('select latitude,longitude from stadium') { row ->
 	assert row.latitude > 25 && row.latitude < 48
 	assert row.longitude > -123 && row.longitude < -71 
 }
+
+db.close()

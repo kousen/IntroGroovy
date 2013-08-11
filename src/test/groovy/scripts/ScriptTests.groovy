@@ -43,7 +43,6 @@ class ScriptTests extends GroovyTestCase {
 	}
     
 	void testOop() {
-		shell.evaluate(new File("$baseDir/oop/defaultctor.groovy"))
 		shell.evaluate(new File("$baseDir/oop/givenctor.groovy"))
 	}
     

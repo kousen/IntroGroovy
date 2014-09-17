@@ -46,8 +46,8 @@ def palindromes =
 	Flee to me, remote elf!'''
 
 palindromes.eachLine {
-	String str = it.trim().replaceAll(/\W/,'').toLowerCase()
-	println str
+	String str = it.replaceAll(/\W/,'').toLowerCase()
+	// println str
 	assert str.reverse() == str
 }
 

@@ -29,17 +29,17 @@ println JsonOutput.prettyPrint(jsonTxt)
 
 // parse JSON data and build URL for pictures
 def json = new JsonSlurper().parseText(jsonTxt)
-def urls = json.photos.photo.collect { p ->
-    "http://farm${p.farm}.staticflickr.com/${p.server}/${p.id}_${p.secret}.jpg"
-}
+def photos = json.photos.photo
 
 // build UI using Swing
 new SwingBuilder().edt {
     frame(title:'Cat pictures', visible: true, pack: true,
         defaultCloseOperation: WC.EXIT_ON_CLOSE, 
-        layout:new GridLayout(0, 2)) {
-        urls[0..5].each { String url ->
-            label(icon:new ImageIcon(url.toURL()))
+        layout:new GridLayout(0, 2, 2, 2)) {
+        photos.each { p ->
+            String url = "http://farm${p.farm}.staticflickr.com/${p.server}/${p.id}_${p.secret}.jpg"
+            String title = p.title
+            label(icon: new ImageIcon(url.toURL()), toolTipText: title)
         }
     }
 }

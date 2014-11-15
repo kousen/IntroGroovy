@@ -10,5 +10,5 @@ out
 *.iml
 *.ipr
 *.iws
-src/main/groovy/flikr/cats.json
-src/main/groovy/flikr/flikr_key.txt
+src/main/groovy/flickr/cats.json
+src/main/groovy/flickr/flikr_key.txt

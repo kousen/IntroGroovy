@@ -1,4 +1,4 @@
-package flikr
+package flickr
 
 import groovy.json.*
 import groovy.swing.SwingBuilder

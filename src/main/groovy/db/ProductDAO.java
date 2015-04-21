@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDAO {
-    private static final String URL = "jdbc:h2:build/test";
+    private static final String URL = "jdbc:h2:./build/test";
     private static final String DRIVER = "org.h2.Driver";
     
     public ProductDAO() {

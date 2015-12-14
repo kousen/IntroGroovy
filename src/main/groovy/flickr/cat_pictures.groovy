@@ -12,7 +12,7 @@ String endPoint = 'https://api.flickr.com/services/rest?'
 def params = [method: 'flickr.photos.search',
               api_key: key,
               format: 'json',
-              tags: 'SpaceHistory',
+              tags: 'cat',
               nojsoncallback: 1,
               media: 'photos',
               per_page: 6]

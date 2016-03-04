@@ -16,7 +16,7 @@
 package builders
 
 AntBuilder ant = new AntBuilder()
-String dir = 'src/main/groovy/builders'
+String dir = '.'
 
 assert !(new File("$dir/antbuildercopy.groovy").exists())
 
@@ -33,7 +33,6 @@ ant.delete file:"$dir/antbuildercopy.groovy"
 ant.with {
     echo 'about to copy the source code'
     copy file:"$dir/antbuilder.groovy", tofile:"$dir/antbuildercopy.groovy"
-    assert true
     echo 'deleting the copied file'
     delete file:"$dir/antbuildercopy.groovy"
 }

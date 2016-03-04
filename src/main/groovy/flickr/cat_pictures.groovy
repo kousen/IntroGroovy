@@ -12,7 +12,7 @@ String endPoint = 'https://api.flickr.com/services/rest?'
 def params = [method: 'flickr.photos.search',
               api_key: key,
               format: 'json',
-              tags: 'cat',
+              tags: 'kitty',
               nojsoncallback: 1,
               media: 'photos',
               per_page: 6]
@@ -24,7 +24,7 @@ String jsonTxt = "$endPoint$qs".toURL().text
 // write formatted JSON data to file
 File f = new File('cats.json')
 if (f) f.delete()
-f << jsonTxt
+f << JsonOutput.prettyPrint(jsonTxt)
 println JsonOutput.prettyPrint(jsonTxt)
 
 // parse JSON data and build URL for pictures

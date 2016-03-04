@@ -19,3 +19,5 @@ use(CurrencyCategory) {
 	println amount.asCurrency(new Locale('hin','IN'))
 	println amount.asCurrency(new Locale('da','DK'))
 }
+
+//12345.asCurrency()

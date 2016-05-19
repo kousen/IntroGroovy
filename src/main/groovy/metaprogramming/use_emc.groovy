@@ -2,6 +2,7 @@ package metaprogramming
 
 import java.util.logging.*
 
+// Intercept (using methodMissing)
 Logger.metaClass.methodMissing = { String name, args ->
     println "inside methodMissing with $name"
     int val = Level.WARNING.intValue() +
@@ -10,8 +11,11 @@ Logger.metaClass.methodMissing = { String name, args ->
     def impl = { Object... varArgs ->
         delegate.log(level,varArgs[0])
     }
+    // Cache the implementation on the metaClass
     Logger.metaClass."$name" = impl
-    impl(args)
+    // impl(args)
+    // Invoke the new implementation
+    delegate.log(name, args)
 }
 
 

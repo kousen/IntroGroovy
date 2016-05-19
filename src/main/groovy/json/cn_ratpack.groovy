@@ -13,19 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================== */
-package json 
+package json
 
 import groovy.json.JsonSlurper
-import groovy.json.JsonException
 
 def url = 'http://localhost:5050'
 
-try {
-    def json = new JsonSlurper().parseText(url.toURL().text)
-//    def joke = json?.value?.joke
-//    assert joke
-//    println joke
-    println json?.joke
-} catch (JsonException e) {
-    e.printStackTrace()
-}
+def json = new JsonSlurper().parseText(url.toURL().text)
+println json?.joke

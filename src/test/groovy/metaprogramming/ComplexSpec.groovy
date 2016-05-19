@@ -24,7 +24,7 @@ import spock.lang.Specification
 class ComplexSpec extends Specification {
     
     def setupSpec() {
-        Complex.metaClass.plus = { Complex c -> delegate.add c }
+        Complex.metaClass.plus = { Complex c -> delegate.add(c) }
         Complex.metaClass.minus = { Complex c -> delegate.subtract c }
         Complex.metaClass.div = { Complex c -> delegate.divide c }
         Complex.metaClass.power = { Complex c -> delegate.pow c }

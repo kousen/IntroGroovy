@@ -16,7 +16,8 @@
 package geocoder
 
 class Geocoder {
-    String base = 'http://maps.google.com/maps/api/geocode/xml?'
+    public static final String BASE =
+            'http://maps.google.com/maps/api/geocode/xml?'
 
     void fillInLatLng(Stadium stadium) {
         String encoded =
@@ -24,7 +25,7 @@ class Geocoder {
                 URLEncoder.encode(it,'UTF-8')
             }.join(',')
         String qs = "address=$encoded"
-        String url = "$base$qs"
+        String url = "$BASE$qs"
         println url
         def response = new XmlSlurper().parse(url)
         def loc = response.result[0].geometry.location

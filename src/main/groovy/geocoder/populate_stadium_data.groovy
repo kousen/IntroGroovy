@@ -51,7 +51,7 @@ db.execute '''
 
 Geocoder geo = new Geocoder()
 stadiums.each { s ->
-    geo.fillInLatLng s
+    geo.fillInLatLng(s)
     sleep 200
     println s
     db.execute """

@@ -6,7 +6,7 @@ String base = 'http://api.icndb.com/jokes/random?'
 String qs = [limitTo: '[nerdy]', firstName: 'Guillaume',
         lastName: 'Laforge'].collect { k,v -> "$k=$v" }
         .join('&')
-URL url = "$base$qs".toURL()
-def json = new JsonSlurper().parseText(
-        url.getText(requestProperties: ['User-Agent':'']))
+String jsonTxt = "$base$qs".toURL()
+        .getText(requestProperties: ['User-Agent':''])
+def json = new JsonSlurper().parseText(jsonTxt)
 println json?.value?.joke

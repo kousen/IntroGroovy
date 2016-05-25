@@ -38,4 +38,8 @@ class StadiumLocationsSpec extends Specification {
         where:
         [name,lat,lng] << db.rows('select name,latitude,longitude from stadium')
     }
+
+    def cleanupSpec() {
+        db?.close()
+    }
 }

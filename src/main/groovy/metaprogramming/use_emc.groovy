@@ -13,9 +13,9 @@ Logger.metaClass.methodMissing = { String name, args ->
     }
     // Cache the implementation on the metaClass
     Logger.metaClass."$name" = impl
-    // impl(args)
+
     // Invoke the new implementation
-    delegate.log(name, args)
+    impl(args)
 }
 
 

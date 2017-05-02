@@ -6,10 +6,6 @@ repositories {
     mavenCentral()
 }
 
-task wrapper(type:Wrapper) {
-    gradleVersion = '2.11'
-}
-
 project.ext.db = file("$buildDir/baseball.mv.db")
 
 task generateTestDb(dependsOn:classes, type:JavaExec) {
@@ -21,7 +17,7 @@ task generateTestDb(dependsOn:classes, type:JavaExec) {
 compileTestGroovy.dependsOn generateTestDb
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.4.6'
+    compile 'org.codehaus.groovy:groovy-all:2.4.11'
     compile 'org.apache.commons:commons-math3:3.0'
     testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
     runtime 'com.h2database:h2:1.4.187'

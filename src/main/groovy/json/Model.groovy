@@ -1,4 +1,4 @@
-package geocoder
+package json
 
 import groovy.transform.Canonical
 

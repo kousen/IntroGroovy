@@ -22,4 +22,6 @@ dependencies {
     testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
     runtime 'com.h2database:h2:1.4.187'
     compile 'org.apache.ant:ant:1.9.4'
+    compile 'com.google.code.gson:gson:2.8.0'
+
 }

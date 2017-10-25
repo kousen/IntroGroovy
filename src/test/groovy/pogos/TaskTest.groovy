@@ -7,7 +7,7 @@ import static org.junit.Assert.*
 
 class TaskTest {
     Date now = new Date()
-    Date then = now + 1
+    Date then = now + 1  // now.plus(1)
     Task t = new Task(name: 'name', priority: 3,
         startDate: now, endDate: then)
 

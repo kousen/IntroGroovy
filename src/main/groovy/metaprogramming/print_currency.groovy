@@ -18,3 +18,5 @@ Locale.default = Locale.US
 assert amount.asCurrency() == '$123,456.79'
 assert amount.asCurrency(Locale.FRANCE) ==
         NumberFormat.getCurrencyInstance(Locale.FRANCE).format(amount)
+println amount.asCurrency()
+println amount.asCurrency(Locale.FRANCE)

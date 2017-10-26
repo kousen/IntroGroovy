@@ -15,15 +15,20 @@
  * ========================================================== */
 package geocoder
 
+import groovy.transform.Canonical
+
+@Canonical
 class Stadium {
-    int id
+    Integer id
+
     String name
     String street
     String city
     String state
     String team
+
     double latitude
     double longitude
 
-    String toString() { "($team,$name,$latitude,$longitude)" }
+    // String toString() { "($team,$name,$latitude,$longitude)" }
 }

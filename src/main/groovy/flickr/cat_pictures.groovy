@@ -19,6 +19,9 @@ def params = [method: 'flickr.photos.search',
 
 // Build URL and download JSON data
 def qs = params.collect { it }.join('&')
+// def qs = params.collect { k,v -> "$k=$v" }.join('&')
+// def qs = params*.toString().join('&')
+println "$endPoint$qs"
 String jsonTxt = "$endPoint$qs".toURL().text
 
 // write formatted JSON data to file

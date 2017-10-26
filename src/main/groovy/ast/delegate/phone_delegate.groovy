@@ -2,12 +2,12 @@ package ast.delegate
 
 class Phone {
     String vendor = 'Samsung'
-    def dial(String number) { "dialing $number" }
+    String dial(String number) { "dialing $number" }
 }
 
 class Camera {
     String vendor = 'Nikon'
-    def takePicture() { "taking picture" }
+    String takePicture() { "taking picture" }
 }
 
 class SmartPhone {

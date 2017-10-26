@@ -19,10 +19,11 @@ class Geocoder {
     public static final String BASE =
             'http://maps.google.com/maps/api/geocode/xml?'
 
+    @SuppressWarnings("GrMethodMayBeStatic")
     void fillInLatLng(Stadium stadium) {
         String encoded =
             [stadium.street, stadium.city, stadium.state].collect { 
-                URLEncoder.encode(it,'UTF-8')
+                URLEncoder.encode(it, 'UTF-8')
             }.join(',')
         String qs = "address=$encoded"
         String url = "$BASE$qs"

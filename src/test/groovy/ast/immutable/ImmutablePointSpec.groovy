@@ -2,7 +2,7 @@ package ast.immutable
 
 import spock.lang.Specification
 
-class ImmutablePointTest extends Specification {
+class ImmutablePointSpec extends Specification {
     Point p = new Point(3, 4)
 
     def "can not change x"() {

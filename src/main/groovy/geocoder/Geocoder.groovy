@@ -17,7 +17,8 @@ package geocoder
 
 class Geocoder {
     public static final String BASE =
-            'http://maps.google.com/maps/api/geocode/xml?'
+            'https://maps.google.com/maps/api/geocode/xml?'
+    public static final String KEY = 'AIzaSyDqSBi5G5qelDmUzgu7slWfldbHfT2WP2M'
 
     @SuppressWarnings("GrMethodMayBeStatic")
     void fillInLatLng(Stadium stadium) {
@@ -25,7 +26,7 @@ class Geocoder {
             [stadium.street, stadium.city, stadium.state].collect { 
                 URLEncoder.encode(it, 'UTF-8')
             }.join(',')
-        String qs = "address=$encoded"
+        String qs = "address=$encoded&key=$KEY"
         String url = "$BASE$qs"
         println url
         def response = new XmlSlurper().parse(url)

@@ -17,15 +17,15 @@ package geocoder
 
 class Geocoder {
     public static final String BASE =
-            'http://maps.google.com/maps/api/geocode/xml?'
+            'https://maps.google.com/maps/api/geocode/xml?'
+    private static final String KEY = 'AIzaSyDw_d6dfxDEI7MAvqfGXEIsEMwjC1PWRno'
 
-    @SuppressWarnings("GrMethodMayBeStatic")
     void fillInLatLng(Stadium stadium) {
         String encoded =
-            [stadium.street, stadium.city, stadium.state].collect { 
-                URLEncoder.encode(it, 'UTF-8')
-            }.join(',')
-        String qs = "address=$encoded"
+                [stadium.street, stadium.city, stadium.state].collect {
+                    URLEncoder.encode(it,'UTF-8')
+                }.join(',')
+        String qs = "address=$encoded&key=$KEY"
         String url = "$BASE$qs"
         println url
         def response = new XmlSlurper().parse(url)

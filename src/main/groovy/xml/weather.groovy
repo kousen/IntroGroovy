@@ -13,6 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================== */
+package xml
+
 url = 'http://weather.yahooapis.com/forecastrss?w=2480318'
 def root = new XmlSlurper().parse(url)
 println( root.channel.location.@city )

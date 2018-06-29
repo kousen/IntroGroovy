@@ -15,11 +15,13 @@
  * ========================================================== */
 package geocoder
 
+import spock.lang.Ignore
 import spock.lang.Shared;
 import spock.lang.Specification;
 import spock.lang.Unroll;
 import groovy.sql.Sql
 
+@Ignore
 class StadiumLocationsSpec extends Specification {
     @Shared Sql db
     

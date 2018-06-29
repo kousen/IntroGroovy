@@ -16,7 +16,7 @@
 package collections
 
 def teams = ["Red Sox","Yankees"]
-assert teams.class == java.util.ArrayList
+assert teams.class == ArrayList
 
 def names = teams as String[]
 assert names.class == String[]
@@ -44,9 +44,9 @@ assert teams[0] == 'Red Sox'
 assert teams[1] == 'Yankees'
 assert teams[-1] == ['Rays','Blue Jays']
 
-teams = ["Red Sox","Yankees","Rays"]
-def popped = teams.pop()
-assert popped == "Rays"
+//teams = ["Red Sox","Yankees","Rays"]
+//def popped = teams.pop()
+//assert popped == "Rays"
 
 assert ["Yankees","Mets"].reverse() == ["Mets","Yankees"]
 

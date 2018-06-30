@@ -7,14 +7,14 @@ repositories {
 }
 
 if (JavaVersion.current() > JavaVersion.VERSION_1_8) {
-    tasks.withType(AbstractCompile) {
-        options.compilerArgs <<
-//                '--add-modules=java.xml.bind,java.activation,java.xml.ws.annotation'
-                ['--add-modules', 'java.xml.bind']
+    def bindingJvmArg = '--add-modules=java.xml.bind'
+    tasks.withType(GroovyCompile) {
+        groovyOptions.fork = true
+        groovyOptions.forkOptions.jvmArgs.add(bindingJvmArg)
     }
 
     tasks.withType(Test) {
-        jvmArgs += ['--add-modules', 'java.xml.bind']
+        jvmArgs bindingJvmArg
     }
 }
 

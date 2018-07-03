@@ -4,17 +4,22 @@ apply plugin: 'idea'
 
 repositories {
     mavenCentral()
+    maven {
+        url 'https://oss.jfrog.org/artifactory/oss-snapshot-local/'
+    }
+}
+
+configurations {
+    jaxb
 }
 
 if (JavaVersion.current() > JavaVersion.VERSION_1_8) {
-    def bindingJvmArg = '--add-modules=java.xml.bind'
     tasks.withType(GroovyCompile) {
-        if (!groovyOptions.fork) groovyOptions.fork = true
-        groovyOptions.forkOptions.jvmArgs.add(bindingJvmArg)
+        groovyClasspath += configurations.jaxb
     }
 
     tasks.withType(Test) {
-        jvmArgs bindingJvmArg
+        classpath += configurations.jaxb
     }
 }
 
@@ -32,10 +37,7 @@ dependencies {
 //    implementation 'org.codehaus.groovy:groovy-all:2.4.15'
     implementation 'org.codehaus.groovy:groovy-all:2.5.0'
 
-    implementation 'javax.xml.bind:jaxb-api:2.3.0'
-    implementation 'com.sun.xml.bind:jaxb-core:2.3.0.1'
-    implementation 'com.sun.xml.bind:jaxb-impl:2.3.0.1'
-    implementation 'javax.activation:activation:1.1.1'
+    jaxb 'javax.xml.bind:jaxb-api:2.3.0'
 
     implementation 'org.apache.commons:commons-math3:3.6.1'
     implementation 'org.apache.ant:ant:1.10.4'

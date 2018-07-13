@@ -4,6 +4,23 @@ apply plugin: 'idea'
 
 repositories {
     mavenCentral()
+    maven {
+        url 'https://oss.jfrog.org/artifactory/oss-snapshot-local/'
+    }
+}
+
+configurations {
+    jaxb
+}
+
+if (JavaVersion.current() > JavaVersion.VERSION_1_8) {
+    tasks.withType(GroovyCompile) {
+        groovyClasspath += configurations.jaxb
+    }
+
+    tasks.withType(Test) {
+        classpath += configurations.jaxb
+    }
 }
 
 //project.ext.db = file("$buildDir/baseball.mv.db")
@@ -18,7 +35,9 @@ repositories {
 
 dependencies {
 //    implementation 'org.codehaus.groovy:groovy-all:2.4.15'
-    implementation 'org.codehaus.groovy:groovy-all:2.5.1'
+    implementation 'org.codehaus.groovy:groovy-all:2.5.0'
+
+    jaxb 'javax.xml.bind:jaxb-api:2.3.0'
 
     implementation 'org.apache.commons:commons-math3:3.6.1'
     implementation 'org.apache.ant:ant:1.10.4'

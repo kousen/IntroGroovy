@@ -15,7 +15,10 @@
  * ========================================================== */
 package collections
 
-import java.text.SimpleDateFormat
+
+import java.time.LocalDate
+import java.time.Month
+import java.time.format.DateTimeFormatter
 
 Range bothEnds = 5..8
 assert bothEnds.contains(5)
@@ -42,20 +45,16 @@ println total
 println total.class.name
 [5,10,15,20].each { println "$it: ${total[it]}" }
 
-def sdf = new SimpleDateFormat("MMM dd, yyyy", Locale.US)
-def cal = Calendar.instance
-cal.set(2011,Calendar.FEBRUARY,27)
-def now = cal.time
-cal.set(2011,Calendar.MARCH,2)
-def then = cal.time
+LocalDate now = LocalDate.of(2011, Month.FEBRUARY, 27)
+LocalDate then = LocalDate.of(2011, Month.MARCH, 2)
 
-def days = []
-(now..then).each { day ->
-    days << sdf.format(day)
+def days = (now..then).collect { day ->
+    day.format(DateTimeFormatter.ISO_LOCAL_DATE)
 }
+println days
 assert days == [
-    'Feb 27, 2011',
-    'Feb 28, 2011',
-    'Mar 01, 2011',
-    'Mar 02, 2011'
+        '2011-02-27',
+        '2011-02-28',
+        '2011-03-01',
+        '2011-03-02'
 ]

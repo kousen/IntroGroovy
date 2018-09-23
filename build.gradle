@@ -3,8 +3,11 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 
 repositories {
-    mavenCentral()
+    jcenter()
 }
+
+//sourceCompatibility = 11
+//targetCompatibility = 11
 
 //project.ext.db = file("$buildDir/baseball.mv.db")
 //
@@ -16,15 +19,19 @@ repositories {
 //
 //compileTestGroovy.dependsOn generateTestDb
 
+test {
+    maxParallelForks = Runtime.runtime.availableProcessors() / 2
+}
+
 dependencies {
 //    implementation 'org.codehaus.groovy:groovy-all:2.4.15'
-    implementation 'org.codehaus.groovy:groovy-all:2.5.1'
+    implementation 'org.codehaus.groovy:groovy-all:2.5.2'
 
     implementation 'org.apache.commons:commons-math3:3.6.1'
-    implementation 'org.apache.ant:ant:1.10.4'
+    implementation 'org.apache.ant:ant:1.10.5'
     implementation 'com.google.code.gson:gson:2.8.5'
 
-    runtime 'com.h2database:h2:1.4.187'
+    runtime 'com.h2database:h2:1.4.197'
 
-    testImplementation 'org.spockframework:spock-core:1.1-groovy-2.4'
+    testImplementation 'org.spockframework:spock-core:1.2-groovy-2.5'
 }

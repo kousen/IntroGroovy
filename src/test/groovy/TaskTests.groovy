@@ -1,7 +1,11 @@
 import org.junit.Test
+import spock.lang.Ignore
+import spock.lang.IgnoreIf
+
+import java.time.LocalDate
 
 class TaskTest {
-    Date now = new Date()
+    LocalDate now = LocalDate.now()
     Task t = new Task(name:'name', priority:3,
             startDate:now, endDate: now + 1, completed: true)
 
@@ -28,16 +32,18 @@ class TaskTest {
 
     @Test
     void testGetAndSetStartDate() {
-        assert (t.startDate - new Date()).abs() < 1
-        t.startDate = new Date() + 1
-        assert (t.startDate - (new Date() + 1)) < 1
+        LocalDate now = LocalDate.now()
+        assert now.until(t.startDate).days == 0
+        t.startDate = now + 1
+        assert now.until(t.startDate).days == 1
     }
 
     @Test
     void testGetAndSetEndDate() {
-        assert (t.endDate - (new Date() + 1)).abs() < 1
-        t.endDate = new Date() + 2
-        assert (t.endDate - (new Date() + 2)).abs() < 1
+        LocalDate now = LocalDate.now()
+        assert now.until(t.endDate).days == 1
+        t.endDate = now + 2
+        assert now.until(t.endDate).days == 2
     }
 
     @Test

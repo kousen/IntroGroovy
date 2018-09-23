@@ -5,8 +5,6 @@ import pogos.groovy.Task
 
 import java.time.LocalDate
 
-import static org.junit.Assert.*
-
 class TaskTest {
     LocalDate now = LocalDate.now()
     LocalDate then = now + 1  // now.plus(1)

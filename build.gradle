@@ -24,7 +24,7 @@ test {
 }
 
 dependencies {
-    implementation 'org.codehaus.groovy:groovy-all:2.5.2'
+    implementation 'org.codehaus.groovy:groovy-all:2.5.3'
 
     implementation 'org.apache.commons:commons-math3:3.6.1'
     implementation 'org.apache.ant:ant:1.10.5'

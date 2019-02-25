@@ -30,7 +30,7 @@ dependencies {
     implementation 'org.apache.ant:ant:1.10.5'
     implementation 'com.google.code.gson:gson:2.8.5'
 
-    runtime 'com.h2database:h2:1.4.197'
+    runtime 'com.h2database:h2:1.4.198'
 
     testImplementation 'org.spockframework:spock-core:1.2-groovy-2.5'
 }

@@ -27,7 +27,7 @@ dependencies {
     implementation 'org.codehaus.groovy:groovy-all:2.5.8'
 
     implementation 'org.apache.commons:commons-math3:3.6.1'
-    implementation 'org.apache.ant:ant:1.10.6'
+    implementation 'org.apache.ant:ant:1.10.7'
     implementation 'com.google.code.gson:gson:2.8.5'
 
     runtime 'com.h2database:h2:1.4.198'

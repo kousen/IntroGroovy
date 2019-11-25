@@ -34,14 +34,19 @@ sql.execute """
 
 assert sql.rows('select * from product').size() == 3
 
-List<Product> products = []
+List<Product> products = sql.rows('select * from product')
+    .collect { row -> new Product(id:row.id, name:row.name, price:row.price) }
+
+products.each { println it }
+
+products = []
 sql.eachRow('select * from product') { row ->
-    products << new Product(id:row.id,name:row.name,price:row.price)        
+    products << new Product(id:row.id, name:row.name, price:row.price)
 } 
 assert products.size() == 3
 
 def params = [4,'soccer ball',16.99]
-sql.execute 'insert into product(id,name,price) values(?,?,?)', params
+sql.execute('insert into product(id,name,price) values(?,?,?)', params)
 
 def row = sql.firstRow('select * from product where id=?', 4)
 assert row.id == 4

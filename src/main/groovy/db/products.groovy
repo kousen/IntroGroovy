@@ -27,10 +27,10 @@ sql.execute '''
     )
 '''
 
-sql.execute """
+sql.execute '''
     insert into product values
     (1,'baseball',4.99),(2,'football',14.95),(3,'basketball',14.99)
-"""
+'''
 
 assert sql.rows('select * from product').size() == 3
 

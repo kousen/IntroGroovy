@@ -15,9 +15,8 @@
  * ========================================================== */
 package json;
 
-import static org.junit.Assert.*
-import org.junit.Test
 import groovy.mock.interceptor.StubFor
+import org.junit.jupiter.api.Test
 
 class ChuckNorrisScriptTests {
     String base = 'src/main/groovy'

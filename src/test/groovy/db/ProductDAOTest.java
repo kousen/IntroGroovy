@@ -15,16 +15,17 @@
  * ========================================================== */
 package db;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ProductDAOTest {
     private ProductDAO dao;
 
-    @Before
-    public void setUpDatabase() throws Exception {
+    @BeforeEach
+    public void setUpDatabase() {
         dao = new ProductDAO();
     }
     
@@ -36,8 +37,10 @@ public class ProductDAOTest {
     @Test
     public void testFindProductById() {
         Product p = dao.findProductById(1);
-        assertEquals(1, p.getId());
-        assertEquals("baseball", p.getName());
+        assertAll(
+                () -> assertEquals(1, p.getId()),
+                () -> assertEquals("baseball", p.getName())
+        );
     }
 
     @Test
@@ -49,5 +52,4 @@ public class ProductDAOTest {
         dao.deleteProduct(4);
         assertEquals(3, dao.getAllProducts().size());
     }
-
 }

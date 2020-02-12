@@ -15,10 +15,8 @@
  * ========================================================== */
 package geocoder
 
-import spock.lang.Ignore
 import spock.lang.Specification
 
-@Ignore
 class GeocoderIntegrationSpec extends Specification {
     Stadium stadium
     Geocoder geocoderXml

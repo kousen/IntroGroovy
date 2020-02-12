@@ -1,6 +1,6 @@
 package pogos
 
-import org.junit.Test
+import org.junit.jupiter.api.Test
 import pogos.groovy.Task
 
 import java.time.LocalDate

@@ -25,7 +25,7 @@ public class MultiplierTest extends TestCase {
 	private Multiplier m;
 	
 	@Override
-	protected void setUp() throws Exception {
+	protected void setUp() {
 		m = new Multiplier();
 	}
 	

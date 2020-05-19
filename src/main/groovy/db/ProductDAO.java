@@ -44,7 +44,7 @@ public class ProductDAO {
         try {
             conn = DriverManager.getConnection(URL);
             stmt = conn.createStatement();
-            stmt.execute("drop table product if exists;");
+            stmt.execute("drop table if exists product;");
             stmt.execute("create table product (id int primary key, name varchar(25), price double);");
             stmt.executeUpdate("insert into product values (1,'baseball',4.99),(2,'football',14.95),(3,'basketball',14.99)");
         } catch (SQLException e) {
@@ -62,7 +62,7 @@ public class ProductDAO {
     public List<Product> getAllProducts() {
         Connection conn = null;
         PreparedStatement pst = null;
-        List<Product> results = new ArrayList<Product>();
+        List<Product> results = new ArrayList<>();
         try {
             conn = DriverManager.getConnection(URL);
             pst = conn.prepareStatement("select * from product");

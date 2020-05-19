@@ -15,7 +15,7 @@
  * ========================================================== */
 package collections
 
-class WordCountGroovyTest extends GroovyTestCase {
+class WordCountGroovyTest {
 	def wcg = new WordCountGroovy()
 	
 	void testCountWords() {

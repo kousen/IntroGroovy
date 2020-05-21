@@ -16,6 +16,12 @@ repositories {
 //
 //compileTestGroovy.dependsOn generateTestDb
 
+task astronauts(type: JavaExec) {
+    dependsOn 'classes'
+    main = 'astro.astronauts_in_space'
+    classpath sourceSets.main.runtimeClasspath
+}
+
 test {
     useJUnitPlatform()
 }

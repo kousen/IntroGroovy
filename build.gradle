@@ -1,6 +1,10 @@
-apply plugin: 'groovy'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
+plugins {
+    id 'groovy'
+    id 'eclipse'
+    id 'application'
+}
+
+mainClassName = 'astro.astronauts_in_space'
 
 repositories {
     jcenter()
@@ -15,12 +19,6 @@ repositories {
 //}
 //
 //compileTestGroovy.dependsOn generateTestDb
-
-task astronauts(type: JavaExec) {
-    dependsOn 'classes'
-    main = 'astro.astronauts_in_space'
-    classpath sourceSets.main.runtimeClasspath
-}
 
 test {
     useJUnitPlatform()

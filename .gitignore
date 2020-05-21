@@ -6,6 +6,7 @@ classes
 .project
 .classpath
 .settings
+.vscode
 out
 *.iml
 *.ipr

@@ -43,7 +43,7 @@ void saveAstronautsInDB(AstroResponse response) {
 
 void printAstronautsFromDB() {
     Sql sql = Sql.newInstance(url: 'jdbc:h2:~/astro', driver: 'org.h2.Driver')
-    assert sql.rows('select * from ASTRONAUTS').size() == 6
+    assert sql.rows('select * from ASTRONAUTS').size() >= 3
 
     sql.eachRow('select * from ASTRONAUTS') { row ->
         println "${row.name.padRight(20)} aboard ${row.craft}"
@@ -54,3 +54,6 @@ void printAstronautsFromDB() {
 getAndParseJSON().people.each {
     println it
 }
+
+saveAstronautsInDB(getAndParseJSON())
+printAstronautsFromDB()

@@ -1,9 +1,11 @@
 package misc
 
 
+import spock.lang.Requires
 import spock.lang.Specification
 import spock.lang.Unroll
 
+@Requires({ os.macOs || os.linux })
 class JumbleSpec extends Specification {
 
     @Unroll

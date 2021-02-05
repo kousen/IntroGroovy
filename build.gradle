@@ -27,7 +27,7 @@ test {
 dependencies {
     implementation 'org.codehaus.groovy:groovy-all:3.0.6'
     testImplementation 'org.spockframework:spock-core:2.0-M4-groovy-3.0'
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.1'
     testImplementation 'org.junit.vintage:junit-vintage-engine:5.7.0'
 
     implementation 'org.apache.commons:commons-math3:3.6.1'

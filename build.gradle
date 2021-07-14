@@ -30,7 +30,7 @@ dependencies {
     testImplementation 'org.junit.vintage:junit-vintage-engine:5.7.2'
 
     implementation 'org.apache.commons:commons-math3:3.6.1'
-    implementation 'org.apache.ant:ant:1.10.10'
+    implementation 'org.apache.ant:ant:1.10.11'
     implementation 'com.google.code.gson:gson:2.8.7'
 
     runtimeOnly 'com.h2database:h2:1.4.200'

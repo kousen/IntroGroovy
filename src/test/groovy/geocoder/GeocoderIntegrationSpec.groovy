@@ -31,7 +31,7 @@ class GeocoderIntegrationSpec extends Specification {
     
     def "fill in lat,lng using XML parsing"() {
         given:
-        def google_lat = 37.411
+        def google_lat = 37.422
         def google_lng = -122.083
         
         when:
@@ -44,7 +44,7 @@ class GeocoderIntegrationSpec extends Specification {
 
     def "fill in lat,lng using JSON parsing"() {
         given:
-        def google_lat = 37.411
+        def google_lat = 37.422
         def google_lng = -122.083
         
         when:

@@ -33,5 +33,5 @@ dependencies {
     implementation 'org.apache.ant:ant:1.10.12'
     implementation 'com.google.code.gson:gson:2.8.9'
 
-    runtimeOnly 'com.h2database:h2:1.4.200'
+    runtimeOnly 'com.h2database:h2:2.0.202'
 }

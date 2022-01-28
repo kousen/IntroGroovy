@@ -15,6 +15,8 @@
  * ========================================================== */
 package geocoder
 
+import groovy.xml.XmlSlurper
+
 class Geocoder {
     public static final String BASE =
             'https://maps.google.com/maps/api/geocode/xml?'

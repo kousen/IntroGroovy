@@ -16,7 +16,7 @@
 package geocoder
 
 import groovy.mock.interceptor.StubFor
-import spock.lang.Ignore;
+import groovy.xml.XmlSlurper
 import spock.lang.Specification
 
 class GeocoderUnitSpec extends Specification {

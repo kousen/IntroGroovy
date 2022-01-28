@@ -15,6 +15,8 @@
  * ========================================================== */
 package builders
 
+import groovy.ant.AntBuilder
+
 AntBuilder ant = new AntBuilder()
 String dir = '.'
 

@@ -15,6 +15,9 @@
  * ========================================================== */
 package xml
 
+import groovy.xml.XmlParser
+import groovy.xml.XmlSlurper
+
 String fileName = 'src/main/groovy/xml/booksNS.xml'
 
 // XmlParser first

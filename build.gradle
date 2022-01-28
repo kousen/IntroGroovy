@@ -1,3 +1,4 @@
+//file:noinspection GroovyAssignabilityCheck
 plugins {
     id 'groovy'
     id 'eclipse'
@@ -24,9 +25,21 @@ test {
     useJUnitPlatform()
 }
 
+def groovyVersion = '4.0.0-rc-2'
+
 dependencies {
     implementation 'org.codehaus.groovy:groovy-all:3.0.9'
-    testImplementation 'org.spockframework:spock-core:2.0-groovy-3.0'
+//    implementation "org.apache.groovy:groovy:$groovyVersion"
+//    implementation "org.apache.groovy:groovy-xml:$groovyVersion"
+//    implementation "org.apache.groovy:groovy-json:$groovyVersion"
+//    implementation "org.apache.groovy:groovy-sql:$groovyVersion"
+//    implementation "org.apache.groovy:groovy-ant:$groovyVersion"
+//    implementation "org.apache.groovy:groovy-swing:$groovyVersion"
+//    implementation "org.apache.groovy:groovy-datetime:$groovyVersion"
+//    implementation "org.apache.groovy:groovy-console:$groovyVersion"
+//    implementation "org.apache.groovy:groovy-test:$groovyVersion"
+
+    testImplementation 'org.spockframework:spock-core:2.1-M2-groovy-3.0'
     testImplementation 'org.junit.vintage:junit-vintage-engine:5.8.2'
 
     implementation 'org.apache.commons:commons-math3:3.6.1'

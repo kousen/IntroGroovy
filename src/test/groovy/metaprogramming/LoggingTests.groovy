@@ -13,8 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================== */
-package metaprogramming;
+package metaprogramming
 
+import groovy.test.GroovyLogTestCase;
 import metaprogramming.without_custom_levels
 import metaprogramming.use_slang_category
 import metaprogramming.use_emc

@@ -15,6 +15,7 @@
  * ========================================================== */
 package strategy.groovy
 
+import groovy.test.GroovyTestCase
 import strategy.groovy.Multiplier;
 
 class MultiplierTest extends GroovyTestCase {

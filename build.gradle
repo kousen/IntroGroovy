@@ -22,6 +22,7 @@ repositories {
 
 test {
     useJUnitPlatform()
+    systemProperty("spock.iKnowWhatImDoing.disableGroovyVersionCheck", "true")  //for GroovyShell execution inside tests
 }
 
 tasks.withType(GroovyCompile).configureEach {

@@ -14,3 +14,4 @@ out
 src/main/groovy/flickr/cats.json
 src/main/groovy/flickr/flickr_key.txt
 cats.json
+.DS_Store

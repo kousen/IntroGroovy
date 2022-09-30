@@ -24,32 +24,27 @@ repositories {
 
 tasks.named('test') {
     useJUnitPlatform()
-    systemProperty("spock.iKnowWhatImDoing.disableGroovyVersionCheck", "true")  //for GroovyShell execution inside tests
-}
-
-tasks.withType(GroovyCompile).configureEach {
-    options.forkOptions.jvmArgs << '-Dspock.iKnowWhatImDoing.disableGroovyVersionCheck=true'    //ok
 }
 
 dependencies {
     implementation(platform(libs.groovy.bom))
-    implementation 'org.apache.groovy:groovy-xml'
-    implementation 'org.apache.groovy:groovy-json'
-    implementation 'org.apache.groovy:groovy-sql'
-    implementation 'org.apache.groovy:groovy-ant'
-    implementation 'org.apache.groovy:groovy-swing'
-    implementation 'org.apache.groovy:groovy-datetime'
-    implementation 'org.apache.groovy:groovy-console'
-    implementation 'org.apache.groovy:groovy-test'
+    implementation libs.groovy.ant
+    implementation libs.groovy.console
+    implementation libs.groovy.datetime
+    implementation libs.groovy.json
+    implementation libs.groovy.sql
+    implementation libs.groovy.swing
+    implementation libs.groovy.test
+    implementation libs.groovy.xml
+
+    implementation libs.ant
+    implementation libs.commons.math
+    implementation libs.gson
 
     testImplementation(libs.spock.core) {
         exclude group: 'org.codehaus.groovy'
     }
     testImplementation libs.bundles.junit
-
-    implementation libs.commons.math
-    implementation libs.ant
-    implementation libs.gson
 
     runtimeOnly libs.h2
 }

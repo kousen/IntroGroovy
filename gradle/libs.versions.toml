@@ -10,7 +10,15 @@ spock = "2.3-groovy-4.0"
 [libraries]
 ant = { module = "org.apache.ant:ant", version.ref = "ant" }
 commons-math = { module = "org.apache.commons:commons-math3", version.ref = "commons-math" }
+groovy-ant = { module = "org.apache.groovy:groovy-ant" }
 groovy-bom = { module = "org.apache.groovy:groovy-bom", version.ref = "groovy-bom" }
+groovy-console = { module = "org.apache.groovy:groovy-console" }
+groovy-datetime = { module = "org.apache.groovy:groovy-datetime" }
+groovy-json = { module = "org.apache.groovy:groovy-json" }
+groovy-sql = { module = "org.apache.groovy:groovy-sql" }
+groovy-swing = { module = "org.apache.groovy:groovy-swing" }
+groovy-test = { module = "org.apache.groovy:groovy-test" }
+groovy-xml = { module = "org.apache.groovy:groovy-xml" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 h2 = { module = "com.h2database:h2", version.ref = "h2" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }

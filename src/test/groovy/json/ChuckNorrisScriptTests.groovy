@@ -13,15 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================== */
-package json;
+package json
 
 import groovy.mock.interceptor.StubFor
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 class ChuckNorrisScriptTests {
     String base = 'src/main/groovy'
 
-    @Test
+    @Test @Disabled("Site may not be available")
     void testChuckNorrisOnline() {
         GroovyShell shell = new GroovyShell()
         shell.evaluate(new File("$base/json/chuck_norris.groovy"))

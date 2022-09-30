@@ -1,0 +1,28 @@
+[versions]
+ant = "1.10.12"
+commons-math = "3.6.1"
+groovy-bom = "4.0.5"
+gson = "2.9.1"
+h2 = "2.1.214"
+junit = "5.9.1"
+spock = "2.3-groovy-4.0"
+
+[libraries]
+ant = { module = "org.apache.ant:ant", version.ref = "ant" }
+commons-math = { module = "org.apache.commons:commons-math3", version.ref = "commons-math" }
+groovy-bom = { module = "org.apache.groovy:groovy-bom", version.ref = "groovy-bom" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+h2 = { module = "com.h2database:h2", version.ref = "h2" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }
+junit-vintage = { module = "org.junit.vintage:junit-vintage-engine", version.ref = "junit" }
+spock-core = { module = "org.spockframework:spock-core", version.ref = "spock" }
+
+[bundles]
+junit = [
+    "junit-jupiter",
+    "junit-vintage",
+]
+
+[plugins]
+version-catalog-update = "nl.littlerobots.version-catalog-update:0.6.1"
+versions = "com.github.ben-manes.versions:0.42.0"

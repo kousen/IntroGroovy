@@ -2,6 +2,8 @@ plugins {
     id 'groovy'
     id 'eclipse'
     id 'application'
+    alias(libs.plugins.versions)
+    alias(libs.plugins.version.catalog.update)
 }
 
 mainClassName = 'astro.astronauts_in_space'
@@ -29,11 +31,8 @@ tasks.withType(GroovyCompile).configureEach {
     options.forkOptions.jvmArgs << '-Dspock.iKnowWhatImDoing.disableGroovyVersionCheck=true'    //ok
 }
 
-String groovyVersion = '4.0.5'
-
 dependencies {
-//    implementation 'org.codehaus.groovy:groovy-all:3.0.9'
-    implementation(platform("org.apache.groovy:groovy-bom:$groovyVersion"))
+    implementation(platform(libs.groovy.bom))
     implementation 'org.apache.groovy:groovy-xml'
     implementation 'org.apache.groovy:groovy-json'
     implementation 'org.apache.groovy:groovy-sql'
@@ -43,15 +42,14 @@ dependencies {
     implementation 'org.apache.groovy:groovy-console'
     implementation 'org.apache.groovy:groovy-test'
 
-    testImplementation('org.spockframework:spock-core:2.3-groovy-4.0') {
+    testImplementation(libs.spock.core) {
         exclude group: 'org.codehaus.groovy'
     }
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
-    testImplementation 'org.junit.vintage:junit-vintage-engine:5.9.1'
+    testImplementation libs.bundles.junit
 
-    implementation 'org.apache.commons:commons-math3:3.6.1'
-    implementation 'org.apache.ant:ant:1.10.12'
-    implementation 'com.google.code.gson:gson:2.9.1'
+    implementation libs.commons.math
+    implementation libs.ant
+    implementation libs.gson
 
-    runtimeOnly 'com.h2database:h2:2.1.214'
+    runtimeOnly libs.h2
 }

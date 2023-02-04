@@ -1,11 +1,11 @@
 [versions]
-ant = "1.10.12"
+ant = "1.10.13"
 commons-math = "3.6.1"
-groovy-bom = "4.0.5"
-gson = "2.9.1"
+groovy-bom = "4.0.8"
+gson = "2.10.1"
 h2 = "2.1.214"
-junit = "5.9.1"
-spock = "2.3-groovy-4.0"
+junit = "5.9.2"
+spock = "2.4-M1-groovy-4.0"
 
 [libraries]
 ant = { module = "org.apache.ant:ant", version.ref = "ant" }
@@ -32,5 +32,5 @@ junit = [
 ]
 
 [plugins]
-version-catalog-update = "nl.littlerobots.version-catalog-update:0.6.1"
-versions = "com.github.ben-manes.versions:0.42.0"
+version-catalog-update = "nl.littlerobots.version-catalog-update:0.7.0"
+versions = "com.github.ben-manes.versions:0.45.0"

@@ -1,7 +1,7 @@
 [versions]
 ant = "1.10.13"
 commons-math = "3.6.1"
-groovy-bom = "4.0.8"
+groovy-bom = "4.0.10"
 gson = "2.10.1"
 h2 = "2.1.214"
 junit = "5.9.2"
@@ -33,4 +33,4 @@ junit = [
 
 [plugins]
 version-catalog-update = "nl.littlerobots.version-catalog-update:0.7.0"
-versions = "com.github.ben-manes.versions:0.45.0"
+versions = "com.github.ben-manes.versions:0.46.0"

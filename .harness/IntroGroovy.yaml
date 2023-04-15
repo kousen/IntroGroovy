@@ -1,0 +1,283 @@
+pipeline:
+  name: IntroGroovy
+  identifier: IntroGroovy
+  projectIdentifier: IntroGroovy
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.GitHubcomIntroGroovy
+        build: <+input>
+  stages:
+    - parallel:
+        - stage:
+            name: build
+            identifier: build
+            type: CI
+            spec:
+              cloneCodebase: true
+              infrastructure:
+                type: KubernetesDirect
+                spec:
+                  connectorRef: rancherdesktopk3
+                  namespace: harness-delegate-ng
+                  automountServiceAccountToken: true
+                  nodeSelector: {}
+                  os: Linux
+              execution:
+                steps:
+                  - step:
+                      type: Run
+                      name: build
+                      identifier: build
+                      spec:
+                        connectorRef: dockerregistry
+                        image: gradle:8.0.2-jdk17
+                        shell: Sh
+                        command: gradle build -x test --info
+                        imagePullPolicy: IfNotPresent
+                  - step:
+                      type: Run
+                      name: test
+                      identifier: test
+                      spec:
+                        connectorRef: dockerregistry
+                        image: gradle:8.0.2-jdk17
+                        shell: Sh
+                        command: gradle build test --info
+                        imagePullPolicy: IfNotPresent
+                        resources:
+                          limits:
+                            memory: 1G
+                  - step:
+                      type: RunTests
+                      name: test-with-intelligence
+                      identifier: testwithintelligence
+                      spec:
+                        connectorRef: dockerregistry
+                        image: gradle:8.0.2-jdk17
+                        language: Java
+                        buildTool: Gradle
+                        args: test --info
+                        runOnlySelectedTests: true
+                        preCommand: |
+                          #ET-SETUP-BEGIN
+                          PROJ_DIR=$PWD
+                          cd /opt
+                          arch=`uname -m`
+                          if [ $arch = "x86_64" ]; then
+                            if cat /etc/os-release | grep -iq alpine ; then
+                              wget -qO- https://get.et.harness.io/releases/latest/alpine/harness-et-agent.tar.gz | tar -xz
+                            else
+                              wget -qO- https://get.et.harness.io/releases/latest/nix/harness-et-agent.tar.gz | tar -xz
+                            fi
+                          elif [ $arch = "aarch64" ]; then
+                            wget -qO- https://get.et.harness.io/releases/latest/arm/harness-et-agent.tar.gz | tar -xz
+                          fi
+                          export ET_COLLECTOR_URL=https://app.harness.io/gratis/et-collector
+                          export ET_APPLICATION_NAME=$HARNESS_PIPELINE_ID
+                          export ET_ENV_ID=_INTERNAL_ET_CI
+                          export ET_DEPLOYMENT_NAME=$HARNESS_BUILD_ID
+                          export ET_ACCOUNT_ID=$HARNESS_ACCOUNT_ID
+                          export ET_ORG_ID=$HARNESS_ORG_ID
+                          export ET_PROJECT_ID=$HARNESS_PROJECT_ID
+                          # export ET_SHUTDOWN_GRACETIME=30000
+                          export JAVA_TOOL_OPTIONS="-agentpath:/opt/harness/lib/libETAgent.so"
+                          # Uncomment the line below if using Java version 10 or above
+                          # export JAVA_TOOL_OPTIONS="-Xshare:off -XX:-UseTypeSpeculation -XX:ReservedCodeCacheSize=512m -agentpath:/opt/harness/lib/libETAgent.so"
+                          cd $PROJ_DIR
+                          #ET-SETUP-END
+                        reports:
+                          type: JUnit
+                          spec:
+                            paths:
+                              - build/reports/test-results/**/*.xml
+                        imagePullPolicy: IfNotPresent
+                        shell: Sh
+                        resources:
+                          limits:
+                            memory: 1G
+                      when:
+                        stageStatus: Success
+                      failureStrategies: []
+              sharedPaths:
+                - /root/.m2
+                - /root/.gradle
+        - stage:
+            name: build-gw
+            identifier: buildgw
+            description: ""
+            type: CI
+            spec:
+              cloneCodebase: true
+              infrastructure:
+                type: KubernetesDirect
+                spec:
+                  connectorRef: rancherdesktopk3
+                  namespace: harness-delegate-ng
+                  automountServiceAccountToken: true
+                  nodeSelector: {}
+                  os: Linux
+              execution:
+                steps:
+                  - step:
+                      type: Run
+                      name: build-gw
+                      identifier: buildgw
+                      spec:
+                        connectorRef: dockerregistry
+                        image: gradle:8.0.2-jdk17
+                        shell: Sh
+                        command: sh gradlew build -x test --info
+                        imagePullPolicy: IfNotPresent
+                        resources:
+                          limits:
+                            memory: 1G
+                  - step:
+                      type: Run
+                      name: test-gw
+                      identifier: testgw
+                      spec:
+                        connectorRef: dockerregistry
+                        image: gradle:8.0.2-jdk17
+                        shell: Sh
+                        command: sh gradlew build test --info
+                        imagePullPolicy: IfNotPresent
+                        resources:
+                          limits:
+                            memory: 1G
+                  - step:
+                      type: RunTests
+                      name: test-with-intelligence
+                      identifier: testwithintelligence
+                      spec:
+                        connectorRef: dockerregistry
+                        image: gradle:8.0.2-jdk17
+                        language: Java
+                        buildTool: Gradle
+                        args: test --info
+                        runOnlySelectedTests: true
+                        preCommand: |
+                          #ET-SETUP-BEGIN
+                          PROJ_DIR=$PWD
+                          cd /opt
+                          arch=`uname -m`
+                          if [ $arch = "x86_64" ]; then
+                            if cat /etc/os-release | grep -iq alpine ; then
+                              wget -qO- https://get.et.harness.io/releases/latest/alpine/harness-et-agent.tar.gz | tar -xz
+                            else
+                              wget -qO- https://get.et.harness.io/releases/latest/nix/harness-et-agent.tar.gz | tar -xz
+                            fi
+                          elif [ $arch = "aarch64" ]; then
+                            wget -qO- https://get.et.harness.io/releases/latest/arm/harness-et-agent.tar.gz | tar -xz
+                          fi
+                          export ET_COLLECTOR_URL=https://app.harness.io/gratis/et-collector
+                          export ET_APPLICATION_NAME=$HARNESS_PIPELINE_ID
+                          export ET_ENV_ID=_INTERNAL_ET_CI
+                          export ET_DEPLOYMENT_NAME=$HARNESS_BUILD_ID
+                          export ET_ACCOUNT_ID=$HARNESS_ACCOUNT_ID
+                          export ET_ORG_ID=$HARNESS_ORG_ID
+                          export ET_PROJECT_ID=$HARNESS_PROJECT_ID
+                          # export ET_SHUTDOWN_GRACETIME=30000
+                          export JAVA_TOOL_OPTIONS="-agentpath:/opt/harness/lib/libETAgent.so"
+                          # Uncomment the line below if using Java version 10 or above
+                          # export JAVA_TOOL_OPTIONS="-Xshare:off -XX:-UseTypeSpeculation -XX:ReservedCodeCacheSize=512m -agentpath:/opt/harness/lib/libETAgent.so"
+                          cd $PROJ_DIR
+                          #ET-SETUP-END
+                        reports:
+                          type: JUnit
+                          spec:
+                            paths:
+                              - build/reports/test-results/**/*.xml
+                        imagePullPolicy: IfNotPresent
+                        shell: Sh
+                        resources:
+                          limits:
+                            memory: 1G
+                      when:
+                        stageStatus: Success
+                      failureStrategies: []
+              sharedPaths:
+                - /root/.m2
+                - /root/.gradle
+        - stage:
+            name: build-it
+            identifier: buildit
+            type: CI
+            spec:
+              cloneCodebase: true
+              infrastructure:
+                type: KubernetesDirect
+                spec:
+                  connectorRef: rancherdesktopk3
+                  namespace: harness-delegate-ng
+                  automountServiceAccountToken: true
+                  nodeSelector: {}
+                  os: Linux
+              execution:
+                steps:
+                  - step:
+                      type: Run
+                      name: build
+                      identifier: build
+                      spec:
+                        connectorRef: dockerregistry
+                        image: gradle:8.0.2-jdk17
+                        shell: Sh
+                        command: gradle build -x test --info
+                        imagePullPolicy: IfNotPresent
+                  - step:
+                      type: RunTests
+                      name: test-with-intelligence
+                      identifier: testwithintelligence
+                      spec:
+                        connectorRef: dockerregistry
+                        image: gradle:8.0.2-jdk17
+                        language: Java
+                        buildTool: Gradle
+                        args: test --info
+                        runOnlySelectedTests: true
+                        preCommand: |
+                          #ET-SETUP-BEGIN
+                          PROJ_DIR=$PWD
+                          cd /opt
+                          arch=`uname -m`
+                          if [ $arch = "x86_64" ]; then
+                            if cat /etc/os-release | grep -iq alpine ; then
+                              wget -qO- https://get.et.harness.io/releases/latest/alpine/harness-et-agent.tar.gz | tar -xz
+                            else
+                              wget -qO- https://get.et.harness.io/releases/latest/nix/harness-et-agent.tar.gz | tar -xz
+                            fi
+                          elif [ $arch = "aarch64" ]; then
+                            wget -qO- https://get.et.harness.io/releases/latest/arm/harness-et-agent.tar.gz | tar -xz
+                          fi
+                          export ET_COLLECTOR_URL=https://app.harness.io/gratis/et-collector
+                          export ET_APPLICATION_NAME=$HARNESS_PIPELINE_ID
+                          export ET_ENV_ID=_INTERNAL_ET_CI
+                          export ET_DEPLOYMENT_NAME=$HARNESS_BUILD_ID
+                          export ET_ACCOUNT_ID=$HARNESS_ACCOUNT_ID
+                          export ET_ORG_ID=$HARNESS_ORG_ID
+                          export ET_PROJECT_ID=$HARNESS_PROJECT_ID
+                          # export ET_SHUTDOWN_GRACETIME=30000
+                          export JAVA_TOOL_OPTIONS="-agentpath:/opt/harness/lib/libETAgent.so"
+                          # Uncomment the line below if using Java version 10 or above
+                          # export JAVA_TOOL_OPTIONS="-Xshare:off -XX:-UseTypeSpeculation -XX:ReservedCodeCacheSize=512m -agentpath:/opt/harness/lib/libETAgent.so"
+                          cd $PROJ_DIR
+                          #ET-SETUP-END
+                        reports:
+                          type: JUnit
+                          spec:
+                            paths:
+                              - build/reports/test-results/**/*.xml
+                        imagePullPolicy: IfNotPresent
+                        shell: Sh
+                        resources:
+                          limits:
+                            memory: 1G
+                      when:
+                        stageStatus: Success
+                      failureStrategies: []
+              sharedPaths:
+                - /root/.m2
+                - /root/.gradle

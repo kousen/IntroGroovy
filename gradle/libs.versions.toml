@@ -4,7 +4,7 @@ commons-math = "3.6.1"
 groovy-bom = "4.0.11"
 gson = "2.10.1"
 h2 = "2.1.214"
-junit = "5.9.2"
+junit = "5.9.3"
 spock = "2.4-M1-groovy-4.0"
 
 [libraries]

@@ -15,8 +15,10 @@
  * ========================================================== */
 package geocoder
 
+import spock.lang.Ignore
 import spock.lang.Specification
 
+@Ignore("Must enable Billing on Google Cloud Platform")
 class GeocoderIntegrationSpec extends Specification {
     Stadium stadium
     Geocoder geocoderXml

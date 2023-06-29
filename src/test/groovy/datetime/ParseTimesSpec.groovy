@@ -1,4 +1,0 @@
-package datetime
-
-class ParseTimesSpec {
-}

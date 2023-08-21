@@ -1,5 +1,5 @@
 [versions]
-ant = "1.10.13"
+ant = "1.10.14"
 commons-math = "3.6.1"
 groovy-bom = "4.0.13"
 gson = "2.10.1"

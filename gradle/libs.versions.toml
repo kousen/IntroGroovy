@@ -2,7 +2,7 @@
 ant = "1.10.15"
 commons-math = "3.6.1"
 groovy-bom = "4.0.25"
-gson = "2.12.0"
+gson = "2.12.1"
 h2 = "2.3.232"
 junit = "5.11.4"
 spock = "2.4-M5-groovy-4.0"

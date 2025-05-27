@@ -1,7 +1,7 @@
 [versions]
 ant = "1.10.15"
 commons-math = "3.6.1"
-groovy-bom = "4.0.26"
+groovy-bom = "4.0.27"
 gson = "2.13.1"
 h2 = "2.3.232"
 junit = "5.11.4"

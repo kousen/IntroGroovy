@@ -6,7 +6,9 @@ plugins {
     alias(libs.plugins.version.catalog.update)
 }
 
-mainClassName = 'astro.astronauts_in_space'
+application {
+    mainClass = 'astro.astronauts_in_space'
+}
 
 repositories {
     mavenCentral()
@@ -41,10 +43,12 @@ dependencies {
     implementation libs.commons.math
     implementation libs.gson
 
+    testImplementation(platform(libs.junit.bom))
     testImplementation(libs.spock.core) {
         exclude group: 'org.codehaus.groovy'
     }
     testImplementation libs.bundles.junit
+    
 
     runtimeOnly libs.h2
 }

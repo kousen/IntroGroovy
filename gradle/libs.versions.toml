@@ -4,8 +4,8 @@ commons-math = "3.6.1"
 groovy-bom = "4.0.27"
 gson = "2.13.1"
 h2 = "2.3.232"
-junit = "5.13.2"
-spock = "2.4-M5-groovy-4.0"
+junit-bom = "5.10.0"
+spock = "2.3-groovy-4.0"
 
 [libraries]
 ant = { module = "org.apache.ant:ant", version.ref = "ant" }
@@ -21,8 +21,9 @@ groovy-test = { module = "org.apache.groovy:groovy-test" }
 groovy-xml = { module = "org.apache.groovy:groovy-xml" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 h2 = { module = "com.h2database:h2", version.ref = "h2" }
-junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }
-junit-vintage = { module = "org.junit.vintage:junit-vintage-engine", version.ref = "junit" }
+junit-bom = { module = "org.junit:junit-bom", version.ref = "junit-bom" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter" }
+junit-vintage = { module = "org.junit.vintage:junit-vintage-engine" }
 spock-core = { module = "org.spockframework:spock-core", version.ref = "spock" }
 
 [bundles]

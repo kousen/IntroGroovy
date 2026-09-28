@@ -17,6 +17,8 @@ package xml
 
 import groovy.xml.XmlSlurper
 
-url = 'http://weather.yahooapis.com/forecastrss?w=2480318'
+String key = System.getenv('OPENWEATHERMAP_API_KEY')
+String url = 'https://api.openweathermap.org/data/2.5/weather?' +
+        "q=Hartford,CT,US&mode=xml&units=imperial&appid=$key"
 def root = new XmlSlurper().parse(url)
-println( root.channel.location.@city )
+println "${root.city.@name}: ${root.temperature.@value} F, ${root.weather.@value}"

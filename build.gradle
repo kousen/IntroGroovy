@@ -44,9 +44,7 @@ dependencies {
     implementation libs.gson
 
     testImplementation(platform(libs.junit.bom))
-    testImplementation(libs.spock.core) {
-        exclude group: 'org.codehaus.groovy'
-    }
+    testImplementation libs.spock.core
     testImplementation libs.bundles.junit
     
 

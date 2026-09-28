@@ -32,9 +32,8 @@ class ChuckNorrisScriptTests {
     void testChuckNorrisOffline() {
         def result = '''
         {
-            "value" : {
-                "joke" : "Chuck Norris can make a method abstract AND final"
-            }
+            "categories" : ["dev"],
+            "value" : "Chuck Norris can make a method abstract AND final"
         }
         '''
    

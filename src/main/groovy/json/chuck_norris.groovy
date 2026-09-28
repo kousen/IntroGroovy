@@ -2,11 +2,13 @@ package json
 
 import groovy.json.JsonSlurper
 
-String base = 'http://api.icndb.com/jokes/random?'
+// Always pass a category: the unfiltered endpoint can return explicit jokes
+String base = 'https://api.chucknorris.io/jokes/random?'
 String qs =
-        [limitTo: ['nerdy'], firstName: 'Bobbi', lastName: 'Lucas']
+        [category: 'dev']
                 .collect { k,v -> "$k=$v" }
                 .join('&')
 String jsonTxt = "$base$qs".toURL().text
 def json = new JsonSlurper().parseText(jsonTxt)
-println json?.value?.joke
+assert json.value
+println json.value

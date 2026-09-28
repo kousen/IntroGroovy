@@ -11,4 +11,5 @@ out
 *.iml
 *.ipr
 *.iws
-.DS_Store.gemini/settings.json
+.DS_Store
+.gemini/settings.json
